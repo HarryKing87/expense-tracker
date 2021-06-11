@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <!-- Meta Tags -->
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <!-- Styles -->
+          <link rel="stylesheet" href = "style.css">
+          <link href="modal.css" rel="stylesheet">
+          <!-- Title -->
+          <title>Expense Tracker</title>
+</head>
+<body>
+          <div class="container">
+                    <h1 class="title">Expense Tracker</h1>
+                    <div class="balance">
+                              <h4 class="balanceTitle">Balance</h4>
+                              <h1 id="main-balance">$ 0,00</h1>
+                              <button data-target="simpleModal_1" data-toggle="modal" style = "border: 2px solid black;border-radius: 10px;background: white;color: black;font-weight: 700;padding: 5px; display: flex; margin: 0.5rem auto;">Adjust Balance</button>
+                              <div id="simpleModal_1" class="modal">
+                                        <div class="modal-window">
+                                                  <h1 style="text-align: center; margin-bottom: 3rem;">Balance Adjustment</h1>
+                                                  <div style="display: flex; flex-direction: column;">
+                                                            <label style="text-align: center;">What's your new balance?</label>
+                                                            <input type="number" class="newBalanceNumber" style="width: 25%; height: 30px; margin: 1rem auto; font-size: 23px;">
+                                                            <button type="button" class="changeBalance" onclick="changeUserBalance()" style="width: 20%; height: 25px; margin: 0 auto;border: 2px solid black; border-radius: 10px;background: white;color: black;font-weight: 700;padding: 5px;">Submit</button>
+                                                  </div>
+                                                  
+                                        </div>
+                                      </div>
+                                      
+                    </div>
+
+                    <div class="button">
+                              <div class="switch">
+                                        <input type = "checkbox" id = "incomeShow" class="buttonIncome"></input>
+                                        <label>Income</label>
+                                        <input type = "checkbox" id = "outcomeShow" class = "buttonOutcome"></input>
+                                        <label>Outcome</label>
+                              </div>
+
+                              <!-- CONTAINER INCOME-->
+                              <div class="containerIncome">
+                                        <form class = "incomeForm"> 
+                                        <label id = "formLabel">Description</label>
+                                        <input type = "textarea" class = "textareaForm" id="dataSubmitInc"></input> 
+                                        <label id = "formLabel">Amount Received</label>
+                                        <input type = "number" class = "textareaForm" id="numberIncome"></input>
+                                        <button type="button" class="submitIncome">Submit</button>
+                                        </form> 
+                              </div>
+
+                              <!-- CONTAINER OUTCOME -->
+                              <div class="containerOutcome">
+                                        <form class = "incomeForm"> 
+                                        <label id = "formLabel">Description</label>
+                                        <input type = "textarea" class = "textareaForm" id="dataSubmitOut"></input> 
+                                        <label id = "formLabel">Amount Spent</label>
+                                        <input type = "number" class = "textareaForm" id="numberOutcome"></input>
+                                        <button type="button" class="submitOutcome">Submit</button>          
+                              </form> 
+                              </div>
+                    </div>
+                    <div class="transactions">
+                              
+                    </div>
+          </div>
+          <script src="submit.js"></script>
+          <script src="script.js"></script>
+          <script src="modal.js"></script>        
+</body>
+</html>
