@@ -14,6 +14,8 @@ let userBalance = document.getElementById('main-balance');
 var balanceArray = [];
 var incomeArray = []; // May not be helpful
 var outcomeArray = [];
+//balanceArray.push(window.localStorage.getItem('userBalance'));
+//userBalance.innerHTML = "$ "  + window.localStorage.getItem('userBalance');
 
 function changeUserBalance() {
           balanceArray.splice(0,1,newBalanceNumber.value);
@@ -21,12 +23,14 @@ function changeUserBalance() {
           balanceArray = balanceArray.map(Number);
           console.log("Balance added: " + balanceArray);
           userBalance.innerHTML = "$ " + newBalanceNumber.value;
+          //window.localStorage.setItem('userBalance', (newBalanceNumber.value));  
 }
 
 submitIncome.addEventListener('click', function() {
           let incomeList = document.createElement('li');
           incomeList.innerHTML = "INCOME: " + textareaIncome.value + " for " + numberIncome.value;  
           balanceArray.push(numberIncome.value);
+          //window.localStorage.setItem('userBalance', (numberIncome.value));
           balanceArray = balanceArray.map(Number);
           let incomeSummary = balanceArray.reduce((a,b) => a + b, 0);
           userBalance.innerHTML = "$ " + incomeSummary;
@@ -35,7 +39,8 @@ submitIncome.addEventListener('click', function() {
           balanceArray.splice(0,2,incomeSummary);
           console.log("OutcomeArray: " + outcomeArray);
           console.log("BalanceArray: " + balanceArray);
-          console.log(textareaIncome.value + " for " + numberIncome.value);
+          console.log(textareaIncome.value + " for " + numberIncome.value); // Logs the last transaction for income
+          //console.log(window.localStorage.getItem(userBalance));
           transactionsContainer.appendChild(incomeList);
 });
 
@@ -43,6 +48,7 @@ submitOutcome.addEventListener('click', function() {
           let outcomeList = document.createElement('li');
           outcomeList.innerHTML = "OUTCOME: " + textareaOutcome.value + " for " + numberOutcome.value;
           balanceArray.push(numberOutcome.value);
+          window.localStorage.setItem('userBalance', (numberOutcome.value));
           balanceArray = balanceArray.map(Number);
           const reducer = (accumulator, currentValue) => accumulator - currentValue; // Subtracting each value from the general balance
           let outcomeSummary = balanceArray.reduce(reducer);
@@ -55,6 +61,9 @@ submitOutcome.addEventListener('click', function() {
           console.log(textareaIncome.value + " for " + numberOutcome.value);
           transactionsContainer.appendChild(outcomeList);
 });
+
+// Fetch items from storage
+
 
 
 
