@@ -138,9 +138,14 @@ TRANSACTION LIST
     background: white;
     padding: 15px;
     max-width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .transactions li {
     padding: 5px;
     font-size: 18px;
+}
+
+.padded-stored-items {
+    padding: 5px;
 }

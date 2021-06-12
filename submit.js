@@ -14,6 +14,7 @@ let userBalance = document.getElementById('main-balance');
 var balanceArray = [];
 var incomeArray = []; // May not be helpful
 var outcomeArray = [];
+var outcomeStorageArray = [];
 //balanceArray.push(window.localStorage.getItem('userBalance'));
 //userBalance.innerHTML = "$ "  + window.localStorage.getItem('userBalance');
 
@@ -26,9 +27,15 @@ function changeUserBalance() {
           //window.localStorage.setItem('userBalance', (newBalanceNumber.value));  
 }
 
+// INCOME SECTION
 submitIncome.addEventListener('click', function() {
           let incomeList = document.createElement('li');
-          incomeList.innerHTML = "INCOME: " + textareaIncome.value + " for " + numberIncome.value;  
+          incomeList.innerHTML = "INCOME: " + textareaIncome.value + " for " + "$ " + numberIncome.value;  
+          incomeArray.push("INCOME: " + textareaIncome.value + " for " + "$ " + numberIncome.value);
+          for (let i = 0; i < incomeArray.length; i++) // Set different income transactions within localStorage
+          {
+                    window.localStorage.setItem(`IncomeNumber ${i}` ,incomeArray[i]);
+          }
           balanceArray.push(numberIncome.value);
           //window.localStorage.setItem('userBalance', (numberIncome.value));
           balanceArray = balanceArray.map(Number);
@@ -44,11 +51,16 @@ submitIncome.addEventListener('click', function() {
           transactionsContainer.appendChild(incomeList);
 });
 
+// OUTCOME SECTION
 submitOutcome.addEventListener('click', function() {
           let outcomeList = document.createElement('li');
-          outcomeList.innerHTML = "OUTCOME: " + textareaOutcome.value + " for " + numberOutcome.value;
+          outcomeList.innerHTML = "OUTCOME: " + textareaOutcome.value + " for " + "$ " + numberOutcome.value;
+          outcomeStorageArray.push("OUTCOME: " + textareaOutcome.value + " for " + "$ " + numberOutcome.value);
+          for (let i = 0; i < outcomeStorageArray.length; i++) // Set different outcome transactions within localStorage
+          {
+                    window.localStorage.setItem(`OutcomeNumber ${i}` ,outcomeStorageArray[i]);
+          }
           balanceArray.push(numberOutcome.value);
-          window.localStorage.setItem('userBalance', (numberOutcome.value));
           balanceArray = balanceArray.map(Number);
           const reducer = (accumulator, currentValue) => accumulator - currentValue; // Subtracting each value from the general balance
           let outcomeSummary = balanceArray.reduce(reducer);
@@ -56,15 +68,33 @@ submitOutcome.addEventListener('click', function() {
           outcomeArray = outcomeArray.map(Number);
           outcomeArray.splice(0,1,outcomeSummary);
           balanceArray.splice(0,3,outcomeSummary);
-          console.log("OutcomeArray: " + outcomeArray);
+          console.log("OutcomeArray: " + outcomeArray.map(Number));
           console.log("BalanceArray: " + balanceArray);
-          console.log(textareaIncome.value + " for " + numberOutcome.value);
+          console.log(textareaOutcome.value + " for " + numberOutcome.value);
           transactionsContainer.appendChild(outcomeList);
+          console.log(outcomeArray);
 });
 
 // Fetch items from storage
 
+window.onload = function () {
+          
+          function allStorage() {
 
+                    var archive = [],
+                        keys = Object.keys(localStorage),
+                        i = 0, key;
+                
+                    for (; key = keys[i]; i++) {
+                        archive.push(localStorage.getItem(key) + "</br>");
+                    }
+                    
+                    return archive.splice(0, 5, "");
+
+                }
+                transactionsContainer.innerHTML = allStorage();
+          
+}
 
 
 
