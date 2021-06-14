@@ -12,9 +12,10 @@ let textareaOutcome = document.getElementById('dataSubmitOut');
 let newBalanceNumber = document.querySelector('.newBalanceNumber');
 let userBalance = document.getElementById('main-balance');
 var balanceArray = [];
-var incomeArray = []; // May not be helpful
+var incomeArray = []; // Used for storage purposes
 var outcomeArray = [];
-var outcomeStorageArray = [];
+var outcomeStorageArray = []; // Used for storage purposes
+var lastKnownBalance = []; // Works on saving the last know balance for the storage to be retrieved after reload
 //balanceArray.push(window.localStorage.getItem('userBalance'));
 //userBalance.innerHTML = "$ "  + window.localStorage.getItem('userBalance');
 
