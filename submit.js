@@ -17,16 +17,18 @@ var outcomeArray = [];
 var outcomeStorageArray = []; // Used for storage purposes
 var lastKnownBalance = []; // Works on saving the last know balance for the storage to be retrieved after reload
 //balanceArray.push(window.localStorage.getItem('userBalance'));
-//userBalance.innerHTML = "$ "  + window.localStorage.getItem('userBalance');
+    userBalance.innerHTML = "$ "  + window.localStorage.getItem('userBalance'); // On page load change the userBalance to last known
+
 
 function changeUserBalance() {
           balanceArray.splice(0,1,newBalanceNumber.value);
           /*balanceArray.push(newBalanceNumber.value);*/
           balanceArray = balanceArray.map(Number);
           console.log("Balance added: " + balanceArray);
-          userBalance.innerHTML = "$ " + newBalanceNumber.value;
-          //window.localStorage.setItem('userBalance', (newBalanceNumber.value));  
-}
+          window.localStorage.setItem('userBalance', (newBalanceNumber.value));
+          lastKnownBalance.push(newBalanceNumber.value);
+          userBalance.innerHTML = "$ " + lastKnownBalance;
+        }
 
 // INCOME SECTION
 submitIncome.addEventListener('click', function() {
