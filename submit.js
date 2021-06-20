@@ -15,20 +15,18 @@ var balanceArray = [];
 var incomeArray = []; // Used for storage purposes
 var outcomeArray = [];
 var outcomeStorageArray = []; // Used for storage purposes
-var lastKnownBalance = []; // Works on saving the last know balance for the storage to be retrieved after reload
-//balanceArray.push(window.localStorage.getItem('userBalance'));
-    userBalance.innerHTML = "$ "  + window.localStorage.getItem('userBalance'); // On page load change the userBalance to last known
 
+const savedBalance = {
+    balance: newBalanceNumber.value
+};
 
 function changeUserBalance() {
           balanceArray.splice(0,1,newBalanceNumber.value);
-          /*balanceArray.push(newBalanceNumber.value);*/
           balanceArray = balanceArray.map(Number);
           console.log("Balance added: " + balanceArray);
-          window.localStorage.setItem('userBalance', (newBalanceNumber.value));
-          lastKnownBalance.push(newBalanceNumber.value);
-          userBalance.innerHTML = "$ " + lastKnownBalance;
+          userBalance.innerHTML = "$ " + balanceArray;
         }
+        console.log(savedBalance.balance);
 
 // INCOME SECTION
 submitIncome.addEventListener('click', function() {
@@ -39,10 +37,10 @@ submitIncome.addEventListener('click', function() {
           {
                     window.localStorage.setItem(`IncomeNumber ${i}` ,incomeArray[i]);
           }
-          balanceArray.push(numberIncome.value);
+          balanceArray.push(numberIncome.value);  // Pushing the value of the income number inside the array
           //window.localStorage.setItem('userBalance', (numberIncome.value));
-          balanceArray = balanceArray.map(Number);
-          let incomeSummary = balanceArray.reduce((a,b) => a + b, 0);
+          balanceArray = balanceArray.map(Number); // Converts the balanceArray array items into numbers
+          let incomeSummary = balanceArray.reduce((a,b) => a + b, 0); // Does the addition between the userBalance and the income number
           userBalance.innerHTML = "$ " + incomeSummary;
           outcomeArray = outcomeArray.map(Number);
           outcomeArray.splice(0,1,incomeSummary);
@@ -98,10 +96,6 @@ window.onload = function () {
                 transactionsContainer.innerHTML = allStorage();
           
 }
-
-
-
-
 
 
 
