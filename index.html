@@ -11,6 +11,42 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
           <!-- Title -->
           <title>Expense Tracker</title>
+          <style>
+            .progress-9 {    
+  --r1: 154%;
+  --r2: 68.5%;
+  width:60px;
+  height:60px;
+  border-radius: 50%; 
+  background:
+    radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#269af2 80%) center left,
+    radial-gradient(var(--r1) var(--r2) at bottom,#269af2 79.5%,#0000 80%) center center,
+    radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#269af2 80%) center right,
+    #ccc;
+  background-size: 50.5% 220%;
+  background-position: -100% 0%,0% 0%,100% 0%;
+  background-repeat:no-repeat;
+  animation:p9 2s infinite linear;
+  margin: 25% auto;
+}
+@media (max-width:675px)
+{
+  .progress-9 {
+    margin: 50% auto;
+  }
+}
+@media (orientation: landscape)
+{
+  .progress-9 {
+    margin: 50% auto;
+  }
+}
+@keyframes p9 {
+    33%  {background-position:    0% 33% ,100% 33% ,200% 33% }
+    66%  {background-position: -100%  66%,0%   66% ,100% 66% }
+    100% {background-position:    0% 100%,100% 100%,200% 100%}
+}
+          </style>
 </head>
 <body>
           <div class="container">
@@ -48,7 +84,7 @@
                                         <input type = "textarea" class = "textareaForm" id="dataSubmitInc"></input> 
                                         <label id = "formLabel">Amount Received</label>
                                         <input type = "number" class = "textareaForm" id="numberIncome"></input>
-                                        <button type="button" class="submitIncome">Submit</button>
+                                        <button type="button" class="submitIncome" onclick="loader()">Submit</button>
                                         </form> 
                               </div>
 
@@ -59,13 +95,21 @@
                                         <input type = "textarea" class = "textareaForm" id="dataSubmitOut"></input> 
                                         <label id = "formLabel">Amount Spent</label>
                                         <input type = "number" class = "textareaForm" id="numberOutcome"></input>
-                                        <button type="button" class="submitOutcome">Submit</button>          
+                                        <button type="button" class="submitOutcome" onclick="loader()">Submit</button>          
                               </form> 
                               </div>
                     </div>
                     <div class="transactions">
                               
                     </div>
+
+
+
+                    <article id="page-loader">
+                      <div class="progress-9"></div>
+                    </article>
+                    
+                    
           </div>
           <script src="submit.js"></script>
           <script src="script.js"></script>
