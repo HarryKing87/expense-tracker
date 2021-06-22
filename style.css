@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 
 html {
-  background-color: #80d0c7;
-  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  background-color: #86B2BF;
+  /*background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);*/
   height: 200%;
   font-family: "Rubik", sans-serif;
 }
@@ -10,7 +10,23 @@ html {
 .title {
   color: white;
   font-weight: 700px;
+  font-size: 70px;
   text-align: center;
+}
+
+.container {
+  animation: fadeIn 1s ease-in both;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -20%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
 }
 
 /***********************
