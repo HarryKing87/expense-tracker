@@ -227,6 +227,13 @@ PAGE LOADER
   text-align: center;
   width: 100%;
   padding-top: 25px;
-  background-color: rgba(0, 0, 0, 0.7);
   height: 300%;
+  border-radius: 10px;
+}
+
+@media (max-width:675px)
+{
+  #page-loader {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 }
