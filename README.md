@@ -8,8 +8,7 @@ After that, by clicking on one of the desired checkboxes for either logging thei
 the submit button at the end of the modal they should get their final user balance.
 
 ## Updates
-First Release: The user balance is working properly. However, it is not stored within the browser storage (localStorage) yet. Only the latest transactions are
-getting saved within the storage.
+<b>First Release</b>: <i>The user balance is working properly. However, it is not stored within the browser storage (localStorage) yet. Only the latest transactions are getting saved within the storage</i>.
 
 ## Social Media
 
